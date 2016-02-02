@@ -16,6 +16,7 @@ public class Abacus extends JPanel implements Drawable {
 
     // constructor
     public Abacus(int numWires, int numBeads, int beadDiameter, Color bgColor) {
+        setBorder(BorderFactory.createEtchedBorder());
         setAbacusBgColor(bgColor);
         wires = new ArrayList<Wire>();
         for (int wireIndex = 0; wireIndex < numWires; ++wireIndex) {
@@ -78,7 +79,7 @@ public class Abacus extends JPanel implements Drawable {
         int abacusHeight = getWires().size() * beadDiameter;
         int abacusWidth = (getWires().get(0).getBeads().size() + beadShiftDistance) * beadDiameter;
         setPreferredSize(new Dimension(abacusWidth, abacusHeight));        
-        Container frameParent = getTopLevelAncestor();
+        Container frameParent = getTopLevelAncestor();  // resize also the frame parent
         if (frameParent != null)
             ((JFrame)frameParent).pack();
     }
